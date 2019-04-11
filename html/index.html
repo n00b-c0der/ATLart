@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
+<title>ATLart</title>
 
 <head>
     <meta charset="UTF-8">
@@ -114,21 +114,15 @@
         var uploadTask = storageRef.put(selectedFile)
 
     }
-    var filename = "img1.jpg";
+    var filename = "Orvieto.jpeg";
     var imgRef = firebase.storage().ref('/TestImages/' + filename)
 
     $(document).on("click", "#downloadbutton", function (e) {
             e.preventDefault()
             imgRef.getDownloadURL().then(function (url) {
-
                 testing2 = url
                 console.log(testing2);
-                var imageOnPage = $(".displayImages")
-                // imageOnPage.append("<img src='testing2'>")
                 $(".displayImages").attr('src', testing2)
-
-                // imageOnPage.append("<img src = 'url' >")
-
             })
         })
 </script>
