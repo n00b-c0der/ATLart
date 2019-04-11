@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <div class="card">
+        <img src="http://fillmurray.com/g/300/300" id="img-preview" />
+        <label class="file-upload-container" for="file-upload">
+            <input id="file-upload" type="file"> Blah
+        </label>
+
+    </div> -->
+    <div class="card">
+        <label class="upload-group" for="file-upload">
+            <input id="file-upload" type="file" class="upload-group">
+        </label>
+        <button type="button" id="uploadbutton">Click me to import</button>
+        <button type="button" id="downloadbutton">Click me to download</button>
+        <!-- <div class="displayImages"> -->
+        <img src="" class="displayImages">
+
+    </div>
+
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.map"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCQUPXI0N7-b4bOpNlb6n8ML1p6YW5VJ48",
+            authDomain: "ronwab-8dbcd.firebaseapp.com",
+            databaseURL: "https://ronwab-8dbcd.firebaseio.com",
+            projectId: "ronwab-8dbcd",
+            storageBucket: "ronwab-8dbcd.appspot.com",
+            messagingSenderId: "148535054528"
+        };
+        firebase.initializeApp(config);
+
+        var selectedFile
+
+        $('#file-upload').on("change", function (e) {
+            e.preventDefault()
+
+            selectedFile = e.target.files[0]
+            console.log(selectedFile);
+
+            uploadFile()
+
+        });
+
+        function uploadFile() {
+            var filename = selectedFile.name
+            console.log(filename);
+
+            // Create a root reference
+            var storageRef = firebase.storage().ref('/TestImages/' + filename)
+
+            var uploadTask = storageRef.put(selectedFile)
+
+        }
+        var filename = "img1.jpg";
+        var imgRef = firebase.storage().ref('/TestImages/' + filename)
+
+
+        $(document).on("click", "#downloadbutton", function (e) {
+            e.preventDefault()
+            imgRef.getDownloadURL().then(function (url) {
+
+                testing2 = url
+                console.log(testing2);
+                var imageOnPage = $(".displayImages")
+                // imageOnPage.append("<img src='testing2'>")
+                $(".displayImages").attr('src', testing2)
+
+                // imageOnPage.append("<img src = 'url' >")
+
+            })
+        })
+    </script>
+
+</body>
+
+</html>
+
+<!-- https://www.youtube.com/watch?v=u_2-pmFY6yc -->
