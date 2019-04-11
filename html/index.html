@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+    <style>
+        body {
+            font-family: "Raleway", Arial, sans-serif
+        }
+        
+        .w3-row img {
+            margin-bottom: -8px
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="w3-content" style="max-width:1500px">
+
+        <header class="w3-container w3-xlarge w3-padding-24">
+            <a href="#" class="w3-left w3-button w3-white">MY ART</a>
+            <a href="#about" class="w3-right w3-button w3-white">About</a>
+        </header>
+
+        <div class="w3-row">
+            <div class="w3-half">
+                <img src="../assets/images/streetart.jpg" style="width:100%">
+                <img src="../assets/images/streetart2.jpg" style="width:100%">
+                <img src="../assets/imagesstreetart5.jpg" style="width:100%">
+                <img src="../assets/images/streetart.jpg">
+            </div>
+
+            <div class="w3-half">
+                <img src="../assets/images/streetart3.jpg" style="width:100%">
+                <img src="../assets/images/streetart4.jpg" style="width:100%">
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="w3-light-grey w3-padding-64 w3-center" id="about">
+        <h2>About</h2>
+        <img src="../assets/images/about.jpg" class="w3-image w3-padding-32" width="300" height="300">
+        <form style="margin:auto;width:60%" action="/action_page.php" target="_blank">
+            <p>Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an interest of lorem ipsum and mauris neque quam blog. I want to share my world with you. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+            <p class="w3-large w3-text-pink">Do not hesitate to contact me!</p>
+            <div class="w3-section">
+                <label><b>Name</b></label>
+                <input class="w3-input w3-border" type="text" required name="Name">
+            </div>
+            <div class="w3-section">
+                <label><b>Email</b></label>
+                <input class="w3-input w3-border" type="text" required name="Email">
+            </div>
+            <div class="w3-section">
+                <label><b>Message</b></label>
+                <input class="w3-input w3-border" required name="Message">
+            </div>
+            <button type="submit" class="w3-button w3-block w3-dark-grey">Send</button>
+        </form>
+    </footer>
+  <!--firebase upload/download-->
+        
+  <div class="card">
+    <label class="upload-group" for="file-upload">
+        <input id="file-upload" type="file" class="upload-group">
+    </label>
+    <button type="button" id="uploadbutton">Click me to import</button>
+    <button type="button" id="downloadbutton">Click me to download</button>
+    <img src="" class="displayImages">
+
+  </div>
+
+</div>
+<script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.map"></script> -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCQUPXI0N7-b4bOpNlb6n8ML1p6YW5VJ48",
+        authDomain: "ronwab-8dbcd.firebaseapp.com",
+        databaseURL: "https://ronwab-8dbcd.firebaseio.com",
+        projectId: "ronwab-8dbcd",
+        storageBucket: "ronwab-8dbcd.appspot.com",
+        messagingSenderId: "148535054528"
+    };
+    firebase.initializeApp(config);
+
+    var selectedFile
+
+    $('#file-upload').on("change", function (e) {
+        e.preventDefault()
+
+        selectedFile = e.target.files[0]
+
+        uploadFile()
+
+    });
+
+    function uploadFile() {
+        var filename = selectedFile.name
+        console.log(filename);
+
+        // Create a root reference
+        var storageRef = firebase.storage().ref('/TestImages/' + filename)
+
+        var uploadTask = storageRef.put(selectedFile)
+
+    }
+    var filename = "img1.jpg";
+    var imgRef = firebase.storage().ref('/TestImages/' + filename)
+
+    $(document).on("click", "#downloadbutton", function (e) {
+            e.preventDefault()
+            imgRef.getDownloadURL().then(function (url) {
+
+                testing2 = url
+                console.log(testing2);
+                var imageOnPage = $(".displayImages")
+                // imageOnPage.append("<img src='testing2'>")
+                $(".displayImages").attr('src', testing2)
+
+                // imageOnPage.append("<img src = 'url' >")
+
+            })
+        })
+</script>
+</body>
+</html>
