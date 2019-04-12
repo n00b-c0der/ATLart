@@ -128,11 +128,11 @@
         })
     </script>
 
-<script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.map"></script> -->
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.map"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyCQUPXI0N7-b4bOpNlb6n8ML1p6YW5VJ48",
@@ -195,8 +195,21 @@
       document.getElementById('map'), {zoom: 4, center: uluru});
     // The marker, positioned at Uluru
     var marker = new google.maps.Marker({position: uluru, map: map});
+
     
     //making map markers from firebase data
+//     function initialize() {
+//   var infowindow = new google.maps.InfoWindow();
+//   var map = new google.maps.Map(
+//     document.getElementById("map"), {
+//       center: new google.maps.LatLng(37.4419, -122.1419),
+//       zoom: 13,
+//       mapTypeId: google.maps.MapTypeId.ROADMAP
+//     });
+
+    var locationsRef = firebase.database().ref("locations");
+  var bounds = new google.maps.LatLngBounds();
+
         locationsRef.on('child_added', function(snapshot) {
     var data = snapshot.val();
     var marker = new google.maps.Marker({
