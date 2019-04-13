@@ -28,7 +28,7 @@
 </head>
 
 <body>
-    <h1>Hello, world!</h1>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -65,12 +65,13 @@
                             </div>
                             <div class="form-group row">
                                 <label for="age-input">Address:</label>
-                                <input class="form-control" id="Address" type="number" required>
+                                <input class="form-control" id="Address" type="text" required>
                             </div>
                             <div class="form-group row">
                                 <label for="age-input">Description:</label>
                                 <input class="form-control" id="Description" type="text" required>
                             </div>
+
                             <div class="card">
                                 <label class="file-upload-container" for="file-upload">
                                     <input id="file-upload" type="file"> Blah
@@ -111,6 +112,7 @@
         var fileUpload = document.getElementById('file-upload');
         var userFile
         var imageName
+        var LocationCoods = 0
 
         fileUpload.addEventListener('change', function (event) {
             event.preventDefault()
@@ -140,23 +142,19 @@
             Address = $('#Address').val().trim().toLowerCase();
             Description = $('#Description').val().trim().toLowerCase();
 
-            var personDetails = {
-                imageTitleField: imageTitle,
-                userNameField: userName,
-                DateField: uploadDate,
-                AddressField: Address,
-                DescriptionField: Description,
-                ImageField: imageName
-            }
+            // var personDetails = {
+            //     imageTitleField: imageTitle,
+            //     userNameField: userName,
+            //     DateField: uploadDate,
+            //     AddressField: Address,
+            //     DescriptionField: Description,
+            //     ImageField: imageName,
+            //     locationCoodsvals: LocationCoods
+            // }
 
-            database.ref().push(personDetails)
+            // database.ref().push(personDetails)
 
-            //Clear field data
-            $('#imageTitle').val().trim("")
-            $('#userName').val().trim("")
-            $('#uploadDate').val().trim("")
-            $('#Address').val().trim("")
-            $('#Description').val().trim("")
+
 
             var formData = new FormData();
             formData.append('file', userFile);
@@ -165,29 +163,87 @@
             axios({
                 // see line 25
                 url: CLOUDNARY_URL,
-                // POST request pushes img to where ever we are saving
                 method: 'POST',
-                //not sure about this guy
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                //not sure about this guy
                 data: formData
 
                 //This is just a callback function 
             }).then(function (res) {
-                console.log(res);
-                console.log(res.data.url)
-                // setting returned results to the imgPreview
-                // imgPreview.src = res.data.secure_url
-                var testing2 = res.data.url
 
-                console.log("inside the cloud");
-                var imageOnPage = $(".displayImages")
-                // imageOnPage.append("<img src='testing2'>")
-                $(".displayImages").attr('src', testing2)
+
+                // var testing2 = res.data.url
+
+
+                // var imageOnPage = $(".displayImages")
+                // $(".displayImages").attr('src', testing2)
+            })
+
+            axios({
+                url: "https://maps.googleapis.com/maps/api/geocode/json?address=" +
+                    Address + "&key=AIzaSyDq2hOQHj-qstNYUsl7a8kHOtrkeJVhdro",
+                method: "GET"
+            }).then(function (data) {
+                console.log(data);
+                // console.log(data.results[0].geometry.location);
+
+                LocationCoods = data.data.results[0].geometry.location
+                console.log(LocationCoods);
+
+                var personDetails = {
+                    imageTitleField: imageTitle,
+                    userNameField: userName,
+                    DateField: uploadDate,
+                    AddressField: Address,
+                    DescriptionField: Description,
+                    ImageField: imageName,
+                    locationCoodsvals: LocationCoods
+                }
+
+                database.ref().push(personDetails)
+
             })
         }
+    </script>
+
+
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 11,
+                center: {
+                    lat: Number(33.7490),
+                    lng: Number(-84.3880)
+                }
+            });
+            var myLatLng = firebase.database().ref("/");
+            myLatLng.on("value", function (snapChot) {
+                // TODO:
+                // Firebase values coming here
+                var data = snapChot
+            .val(); // { rahdnkey: { locationCoodsvals: {} }, anyotherrahdnkey: { locationCoodsvals: {} } }
+                for (var key in data) {
+                    let userLocation = data[key].locationCoodsvals;
+                    console.log("My Lat LG: ", userLocation);
+                    var marker = new google.maps.Marker({
+                        position: userLocation,
+                        map: map,
+                        title: "Hello World!"
+                    });
+                }
+            });
+        }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDq2hOQHj-qstNYUsl7a8kHOtrkeJVhdro&callback=initMap">
+    </script>
+
+
+
+
+
+
     </script>
 
 </body>
