@@ -23,3 +23,7 @@
     background-color: #ff0000;
     width: 0;
   }
+
+#card-default {
+  width: 500px;
+}
