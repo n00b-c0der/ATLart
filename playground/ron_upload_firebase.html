@@ -14,7 +14,6 @@
         <label class="file-upload-container" for="file-upload">
             <input id="file-upload" type="file"> Blah
         </label>
-
     </div> -->
     <div class="card">
         <label class="upload-group" for="file-upload">
@@ -43,45 +42,32 @@
             messagingSenderId: "148535054528"
         };
         firebase.initializeApp(config);
-
         var selectedFile
-
         $('#file-upload').on("change", function (e) {
             e.preventDefault()
-
             selectedFile = e.target.files[0]
             console.log(selectedFile);
-
             uploadFile()
-
         });
 
         function uploadFile() {
             var filename = selectedFile.name
             console.log(filename);
-
             // Create a root reference
             var storageRef = firebase.storage().ref('/TestImages/' + filename)
-
             var uploadTask = storageRef.put(selectedFile)
-
         }
         var filename = "img1.jpg";
         var imgRef = firebase.storage().ref('/TestImages/' + filename)
-
-
         $(document).on("click", "#downloadbutton", function (e) {
             e.preventDefault()
             imgRef.getDownloadURL().then(function (url) {
-
                 testing2 = url
                 console.log(testing2);
                 var imageOnPage = $(".displayImages")
                 // imageOnPage.append("<img src='testing2'>")
                 $(".displayImages").attr('src', testing2)
-
                 // imageOnPage.append("<img src = 'url' >")
-
             })
         })
     </script>
