@@ -25,6 +25,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- <script src="./cloudnaryUpload.js"></script> -->
     <title>Hello, world!</title>
+
+    <style>
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 600px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+    </style>
 </head>
 
 <body>
@@ -86,6 +96,9 @@
                 </div>
             </div>
         </div>
+
+
+        <div id="map"></div>
     </div>
 
     <script>
@@ -207,6 +220,9 @@
         }
     </script>
 
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDq2hOQHj-qstNYUsl7a8kHOtrkeJVhdro&callback=initMap">
+    </script>
 
     <script>
         function initMap() {
@@ -217,12 +233,15 @@
                     lng: Number(-84.3880)
                 }
             });
+
             var myLatLng = firebase.database().ref("/");
+
             myLatLng.on("value", function (snapChot) {
                 // TODO:
                 // Firebase values coming here
                 var data = snapChot
-            .val(); // { rahdnkey: { locationCoodsvals: {} }, anyotherrahdnkey: { locationCoodsvals: {} } }
+                    .val(); // { rahdnkey: { locationCoodsvals: {} }, anyotherrahdnkey: { locationCoodsvals: {} } }
+
                 for (var key in data) {
                     let userLocation = data[key].locationCoodsvals;
                     console.log("My Lat LG: ", userLocation);
@@ -234,16 +253,6 @@
                 }
             });
         }
-    </script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDq2hOQHj-qstNYUsl7a8kHOtrkeJVhdro&callback=initMap">
-    </script>
-
-
-
-
-
-
     </script>
 
 </body>
