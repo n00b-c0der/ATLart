@@ -92,12 +92,66 @@
         </button>
       </form>
     </footer>
-    <div class="card">
-      <img src="http://fillmurray.com/g/300/300" id="img-preview" />
-      <label class="file-upload-container" for="file-upload">
-        <input id="file-upload" type="file" /> Blah
-      </label>
+    
+    <h1>Hello, world!</h1>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <div class="container">
+
+        <!-- Jumbotron -->
+        <div class="jumbotron">
+            <h1 class="text-center">Employee Tracker</h1>
+        </div>
+
+        <div class="row">
+
+            <!-- Sign-Up Card-->
+            <div class="col-lg-6">
+                <div class="card card-default">
+                    <div class="card-header">
+                        New Member Sign-Up
+                    </div>
+                    <div class="card-body">
+                        <!-- Sign-up Form (note the various input "types")-->
+                        <form role="form" onSubmit="FunctionSubmit(event)">
+                            <div class="form-group row">
+                                <label for="name-input">User Name:</label>
+                                <input class="form-control" id="userName" type="text" required>
+                            </div>
+                            <div class="form-group row">
+                                <label for="email-input">Image title:</label>
+                                <input class="form-control" id="imageTitle" type="text" required>
+                            </div>
+                            <div class="form-group row">
+                                <label for="age-input">upload Date:</label>
+                                <input class="form-control" id="uploadDate" type="date" required>
+                            </div>
+                            <div class="form-group row">
+                                <label for="age-input">Address:</label>
+                                <input class="form-control" id="Address" type="text" required>
+                            </div>
+                            <div class="form-group row">
+                                <label for="age-input">Description:</label>
+                                <input class="form-control" id="Description" type="text" required>
+                            </div>
+                            <div class="card">
+                                <label class="file-upload-container" for="file-upload">
+                                    <input id="file-upload" type="file"> Blah
+                                </label>
+                            </div>
+                            <div>
+                                <img src="" class="displayImages">
+                            </div>
+                            <button class="btn btn-default" id="submit-button" type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
 
     <h3>My Google Maps Demo</h3>
     <!--The div element for the map -->
