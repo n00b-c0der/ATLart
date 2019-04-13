@@ -18,23 +18,32 @@ $(document).ready(function () {
     const auth = firebase.auth()
     const db = firebase.firestore()
 
-    // get data
-    // db.collection('guides').get().then((snapshot) => {
-    //     //value coming in from index.js
-    //     setupGuides(snapshot.docs);
+    //guides is a collection in the db
+    db.collection('guides').get().then(snapshot => {
+        //value coming in from index.js
+        // calling the setupGuides function defined in index.js
+        console.log(snapshot);
+        console.log(snapshot.docs);
 
-    // })
+        // setupGuides(snapshot.docs)
+    });
+
     //listen for auth  status change
     auth.onAuthStateChanged(user => {
-        if (user) {
+        // if (user) {
+        //     db.collection('guides').get().then((snapshot) => {
+        //         //value coming in from index.js
+        //         setupGuides(snapshot.docs);
 
+        //     })
 
-            console.log(`user logged in ${user.email}`);
+        //     console.log(`user logged in ${user.email}`);
 
-        } else {
-            console.log("logged out");
+        // } else {
+        //     console.log("logged out");
+        //     setupGuides([])
 
-        }
+        // }
 
     })
 
