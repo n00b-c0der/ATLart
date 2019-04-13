@@ -57,7 +57,7 @@ $(document).ready(function () {
             },
             data: formData
 
-            //This is just a callback function 
+            //This is just a callback function
         }).then(function (res) {
 
 
