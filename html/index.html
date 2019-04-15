@@ -7,11 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://cdn.firebase.com/libs/geofire/4.1.2/geofire.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Raleway"
-      rel="stylesheet"
-      type="text/css"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css"/>
 
     <style>
       body {
@@ -42,7 +38,7 @@
         <div class="w3-half">
           <img src="../assets/images/streetart.jpg" style="width:100%" />
           <img src="../assets/images/streetart2.jpg" style="width:100%" />
-          <img src="../assets/images/mlk.jpg" style="width:100%" />
+
         </div>
 
         <div class="w3-half">
@@ -277,7 +273,7 @@
 
           for (var key in data) {
             let userLocation = data[key].locationCoodsvals;
-            console.log("My Lat LG: ", userLocation);
+            console.log(userLocation);
             var marker = new google.maps.Marker({
               position: userLocation,
               map: map,
