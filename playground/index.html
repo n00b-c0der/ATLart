@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/form.css">
+
+
+    <style>
+        body {
+            font-family: "Raleway", Arial, sans-serif
+        }
+
+        .w3-row img {
+            margin-bottom: -8px
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="w3-content" style="max-width:1500px">
+
+        <header class="w3-container w3-xlarge w3-padding-24">
+            <a href="#" class="w3-left w3-button w3-white">MY ART</a>
+            <a href="#about" class="w3-right w3-button w3-white">About</a>
+            <a href="./googlemaps.html" class="w3-right w3-button w3-white">Map</a>
+
+        </header>
+
+        <div class="w3-row">
+            <div class="w3-half">
+                <img src="assets/images/streetart.jpg" style="width:100%; height: 400px">
+                <img src="assets/images/streetart2.jpg" style="width:100%; height: 400px">
+            </div>
+
+            <div class="w3-half">
+                <img src="assets/images/streetart3.jpg" style="width:100%; height:400px">
+                <img src="assets/images/streetart4.jpg" style="width:100%; height:400px">
+
+            </div>
+        </div>
+
+        <footer class="w3-light-grey w3-padding-64 w3-center" id="about">
+            <h2>About</h2>
+            <img src="assets/images/about.jpg" class="w3-image w3-padding-32" width="300" height="300">
+            <form style="margin:auto;width:60%" target="_blank">
+                <p>Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an interest
+                    of lorem ipsum and mauris neque quam blog. I want to share my world with you. Praesent tincidunt sed
+                    tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non
+                    fringilla. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae,
+                    ultricies congue gravida diam non fringilla.</p>
+                <!-- Button to open the modal -->
+                <!-- <button onclick="document.getElementById('id01').style.display='block'">Art Submission</button> -->
+                <div class="form-group row">
+                    <label for="name-input">User Name:</label>
+                    <input class="form-control" id="userName" type="text" required>
+                </div>
+                <div class="form-group row">
+                    <label for="email-input">Image title:</label>
+                    <input class="form-control" id="imageTitle" type="text" required>
+                </div>
+                <div class="form-group row">
+                    <label for="age-input">upload Date:</label>
+                    <input class="form-control" id="uploadDate" type="date" required>
+                </div>
+                <div class="form-group row">
+                    <label for="age-input">Address:</label>
+                    <input class="form-control" id="Address" type="text" required>
+                </div>
+                <div class="form-group row">
+                    <label for="age-input">Description:</label>
+                    <input class="form-control" id="Description" type="text" required>
+                </div>
+
+                <div class="card">
+                    <label class="file-upload-container" for="file-upload">
+                        <input id="file-upload" type="file"> Blah
+                    </label>
+                </div>
+                <div>
+                    <img src="" class="displayImages">
+                </div>
+                <button class="btn btn-default" id="submit-button" type="submit">Submit</button>
+
+
+            </form>
+        </footer>
+        <!--firebase upload/download-->
+
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyCQUPXI0N7-b4bOpNlb6n8ML1p6YW5VJ48",
+                authDomain: "ronwab-8dbcd.firebaseapp.com",
+                databaseURL: "https://ronwab-8dbcd.firebaseio.com",
+                projectId: "ronwab-8dbcd",
+                storageBucket: "ronwab-8dbcd.appspot.com",
+                messagingSenderId: "148535054528"
+            };
+            firebase.initializeApp(config);
+            database = firebase.database()
+            var selectedFile;
+            // var userName;
+            // var Address = 0
+            // var Description;
+            var CLOUDNARY_URL = 'https://api.cloudinary.com/v1_1/ronwab/upload'
+            var CLOUDNARY_UPLOAD_PRESET = 'ffghjylr'
+            var fileUpload = document.getElementById('file-upload');
+            var userFile
+            var imageName
+            fileUpload.addEventListener('change', function (event) {
+                event.preventDefault()
+                console.log()
+                userFile = event.target.files[0]
+            })
+            // function disableSubmit() {
+            //     if (imageTitle === "" || userName === "" || uploadDate === "" || imageName === "" || Address === "" ||
+            //         Description === ""){
+            //         }else{
+            //         }
+            // }
+            $(document).on("click", ".signup", function FunctionSubmit(event) {
+                event.preventDefault()
+                var userName = $('#userName').val().toLowerCase();
+                var Address = $('#Address').val().toLowerCase();
+                var Description = $('#Description').val().toLowerCase();
+                console.log(userName);
+                var personDetails = {
+                    userNameField: userName,
+                    AddressField: Address,
+                    DescriptionField: Description,
+                }
+                database.ref().push(personDetails)
+                //Clear field data
+                $('#userName').val().trim("")
+                $('#Address').val().trim("")
+                $('#Description').val().trim("")
+                var formData = new FormData();
+                formData.append('file', userFile);
+                formData.append('upload_preset', CLOUDNARY_UPLOAD_PRESET)
+                axios({
+                    // see line 25
+                    url: CLOUDNARY_URL,
+                    // POST request pushes img to where ever we are saving
+                    method: 'POST',
+                    //not sure about this guy
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    //not sure about this guy
+                    data: formData
+                    //This is just a callback function 
+                }).then(function (res) {
+                    console.log(res);
+                    console.log(res.data.url)
+                    // setting returned results to the imgPreview
+                    // imgPreview.src = res.data.secure_url
+                    var testing2 = res.data.url
+                    console.log("inside the cloud");
+                    var imageOnPage = $(".displayImages")
+                    // imageOnPage.append("<img src='testing2'>")
+                    $(".displayImages").attr('src', testing2)
+                })
+            })
+        })
+    </script>
+
+</body>
+
+</html>

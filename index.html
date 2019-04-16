@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1,
+            shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script>
+    moment().format()
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <script src="./assets/javascript/firebase.js"></script>
+  <script src="./assets/javascript/googlemaps.js"></script>
+  <title>Hello, world!</title>
+
+  <style>
+    /* Set the size of the div element that contains the map */
+    #map {
+      height: 600px;
+      /* The height is 400 pixels */
+      width: 100%;
+      /* The width is the width of the web page */
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div class="container">
+
+    <a href="./html/googlemaps.html">MAPS</a>
+    <div class="jumbotron">
+      <h1 class="text-center">Employee Tracker</h1>
+    </div>
+
+    <div class="row">
+
+      <!-- Sign-Up Card-->
+      <div class="col-lg-6">
+        <div class="card card-default">
+          <div class="card-header">
+            New Member Sign-Up
+          </div>
+          <div class="card-body">
+            <!-- Sign-up Form (note the various input "types")-->
+            <form role="form">
+              <div class="form-group row">
+                <label for="name-input">User Name:</label>
+                <input class="form-control" id="userName" type="text" required>
+              </div>
+              <div class="form-group row">
+                <label for="email-input">Image title:</label>
+                <input class="form-control" id="imageTitle" type="text" required>
+              </div>
+              <div class="form-group row">
+                <label for="age-input">upload Date:</label>
+                <input class="form-control" id="uploadDate" type="date" required>
+              </div>
+              <div class="form-group row">
+                <label for="age-input">Address:</label>
+                <input class="form-control" id="Address" type="text" required>
+              </div>
+              <div class="form-group row">
+                <label for="age-input">Description:</label>
+                <input class="form-control" id="Description" type="text" required>
+              </div>
+
+              <div class="card">
+                <label class="file-upload-container" for="file-upload">
+                  <input id="file-upload" type="file"> Blah
+                </label>
+              </div>
+              <div>
+                <img src="" class="displayImages">
+              </div>
+              <button class="btn btn-default" id="submit-button" type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="map"></div>
+  </div>
+</body>
+<!-- <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDq2hOQHj-qstNYUsl7a8kHOtrkeJVhdro&callback=initMap">
+</script>
+<script>
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 11,
+      center: {
+        lat: Number(33.7490),
+        lng: Number(-84.3880)
+      }
+    });
+
+    var myLatLng = firebase.database().ref("/");
+
+    myLatLng.on("value", function (snapChot) {
+      // TODO:
+      // Firebase values coming here
+      var data = snapChot
+        .val(); // { rahdnkey: { locationCoodsvals: {} }, anyotherrahdnkey: { locationCoodsvals: {} } }
+
+      for (var key in data) {
+        let userLocation = data[key].locationCoodsvals;
+        console.log("My Lat LG: ", userLocation);
+        var marker = new google.maps.Marker({
+          position: userLocation,
+          map: map,
+          title: "Hello World!"
+        });
+      }
+    });
+  }
+</script> -->
+
+</html>

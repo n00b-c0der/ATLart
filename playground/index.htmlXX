@@ -38,7 +38,10 @@
         <div class="w3-half">
           <img src="../assets/images/streetart.jpg" style="width:100%" />
           <img src="../assets/images/streetart2.jpg" style="width:100%" />
+<<<<<<< HEAD:html/index.html
 
+=======
+>>>>>>> eab6f065ec9fed00ccfe8bb07f698a66ff57cf91:playground/index.htmlXX
         </div>
 
         <div class="w3-half">
@@ -105,7 +108,11 @@
 
             <!-- Sign-Up Card-->
             <div class="col-lg-6">
+<<<<<<< HEAD:html/index.html
                 <div class="card card-default">
+=======
+                <div class="card-default">
+>>>>>>> eab6f065ec9fed00ccfe8bb07f698a66ff57cf91:playground/index.htmlXX
                     <div class="card-header">
                         New Member Sign-Up
                     </div>
@@ -273,7 +280,11 @@
 
           for (var key in data) {
             let userLocation = data[key].locationCoodsvals;
+<<<<<<< HEAD:html/index.html
             console.log(userLocation);
+=======
+            console.log("My Lat LG: ", userLocation);
+>>>>>>> eab6f065ec9fed00ccfe8bb07f698a66ff57cf91:playground/index.htmlXX
             var marker = new google.maps.Marker({
               position: userLocation,
               map: map,
@@ -289,4 +300,8 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDq2hOQHj-qstNYUsl7a8kHOtrkeJVhdro&callback=initMap"
     ></script>
   </body>
+<<<<<<< HEAD:html/index.html
 </html>
+=======
+</html>
+>>>>>>> eab6f065ec9fed00ccfe8bb07f698a66ff57cf91:playground/index.htmlXX

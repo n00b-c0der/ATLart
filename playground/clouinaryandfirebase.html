@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+            shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script>
+        moment().format()
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script src="./cloudnaryUpload.js"></script> -->
+    <title>Hello, world!</title>
+
+    <style>
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 600px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <div class="container">
+
+        <!-- Jumbotron -->
+        <div class="jumbotron">
+            <h1 class="text-center">Employee Tracker</h1>
+        </div>
+
+        <div class="row">
+
+            <!-- Sign-Up Card-->
+            <div class="col-lg-6">
+                <div class="card card-default">
+                    <div class="card-header">
+                        New Member Sign-Up
+                    </div>
+                    <div class="card-body">
+                        <!-- Sign-up Form (note the various input "types")-->
+                        <form role="form" onSubmit="FunctionSubmit(event)">
+                            <div class="form-group row">
+                                <label for="name-input">User Name:</label>
+                                <input class="form-control" id="userName" type="text" required>
+                            </div>
+                            <div class="form-group row">
+                                <label for="email-input">Image title:</label>
+                                <input class="form-control" id="imageTitle" type="text" required>
+                            </div>
+                            <div class="form-group row">
+                                <label for="age-input">upload Date:</label>
+                                <input class="form-control" id="uploadDate" type="date" required>
+                            </div>
+                            <div class="form-group row">
+                                <label for="age-input">Address:</label>
+                                <input class="form-control" id="Address" type="text" required>
+                            </div>
+                            <div class="form-group row">
+                                <label for="age-input">Description:</label>
+                                <input class="form-control" id="Description" type="text" required>
+                            </div>
+
+                            <div class="card">
+                                <label class="file-upload-container" for="file-upload">
+                                    <input id="file-upload" type="file"> Blah
+                                </label>
+                            </div>
+                            <div>
+                                <img src="" class="displayImages">
+                            </div>
+                            <button class="btn btn-default" id="submit-button" type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="map"></div>
+    </div>
+
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCQUPXI0N7-b4bOpNlb6n8ML1p6YW5VJ48",
+            authDomain: "ronwab-8dbcd.firebaseapp.com",
+            databaseURL: "https://ronwab-8dbcd.firebaseio.com",
+            projectId: "ronwab-8dbcd",
+            storageBucket: "ronwab-8dbcd.appspot.com",
+            messagingSenderId: "148535054528"
+        };
+        firebase.initializeApp(config);
+        database = firebase.database()
+        var selectedFile
+        var imageTitle;
+        var userName;
+        var uploadDate = 0;
+        var Address = 0
+        var Description
+
+        var CLOUDNARY_URL = 'https://api.cloudinary.com/v1_1/ronwab/upload'
+        var CLOUDNARY_UPLOAD_PRESET = 'ffghjylr'
+        var fileUpload = document.getElementById('file-upload');
+        var userFile
+        var imageName
+        var LocationCoods = 0
+
+        fileUpload.addEventListener('change', function (event) {
+            event.preventDefault()
+            console.log(event)
+
+            userFile = event.target.files[0]
+            imageName = event.target.files[0].name
+
+        })
+
+        // function disableSubmit() {
+        //     if (imageTitle === "" || userName === "" || uploadDate === "" || imageName === "" || Address === "" ||
+        //         Description === ""){
+
+        //         }else{
+
+        //         }
+
+        // }
+        function FunctionSubmit(event) {
+            event.preventDefault()
+            console.log(imageName);
+
+            imageTitle = $('#imageTitle').val().trim().toLowerCase();
+            userName = $('#userName').val().toLowerCase();
+            uploadDate = $('#uploadDate').val().trim().toLowerCase();
+            Address = $('#Address').val().trim().toLowerCase();
+            Description = $('#Description').val().trim().toLowerCase();
+
+            // var personDetails = {
+            //     imageTitleField: imageTitle,
+            //     userNameField: userName,
+            //     DateField: uploadDate,
+            //     AddressField: Address,
+            //     DescriptionField: Description,
+            //     ImageField: imageName,
+            //     locationCoodsvals: LocationCoods
+            // }
+
+            // database.ref().push(personDetails)
+
+
+
+            var formData = new FormData();
+            formData.append('file', userFile);
+            formData.append('upload_preset', CLOUDNARY_UPLOAD_PRESET)
+
+            axios({
+                // see line 25
+                url: CLOUDNARY_URL,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                data: formData
+
+                //This is just a callback function 
+            }).then(function (res) {
+
+
+                // var testing2 = res.data.url
+
+
+                // var imageOnPage = $(".displayImages")
+                // $(".displayImages").attr('src', testing2)
+            })
+
+            axios({
+                url: "https://maps.googleapis.com/maps/api/geocode/json?address=" +
+                    Address + "&key=AIzaSyDq2hOQHj-qstNYUsl7a8kHOtrkeJVhdro",
+                method: "GET"
+            }).then(function (data) {
+                console.log(data);
+                // console.log(data.results[0].geometry.location);
+
+                LocationCoods = data.data.results[0].geometry.location
+                console.log(LocationCoods);
+
+                var personDetails = {
+                    imageTitleField: imageTitle,
+                    userNameField: userName,
+                    DateField: uploadDate,
+                    AddressField: Address,
+                    DescriptionField: Description,
+                    ImageField: imageName,
+                    locationCoodsvals: LocationCoods
+                }
+
+                database.ref().push(personDetails)
+
+            })
+        }
+    </script>
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDq2hOQHj-qstNYUsl7a8kHOtrkeJVhdro&callback=initMap">
+    </script>
+
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 11,
+                center: {
+                    lat: Number(33.7490),
+                    lng: Number(-84.3880)
+                }
+            });
+
+            var myLatLng = firebase.database().ref("/");
+
+            myLatLng.on("value", function (snapChot) {
+                // TODO:
+                // Firebase values coming here
+                var data = snapChot
+                    .val(); // { rahdnkey: { locationCoodsvals: {} }, anyotherrahdnkey: { locationCoodsvals: {} } }
+
+                for (var key in data) {
+                    let userLocation = data[key].locationCoodsvals;
+                    console.log("My Lat LG: ", userLocation);
+                    var marker = new google.maps.Marker({
+                        position: userLocation,
+                        map: map,
+                        title: "Hello World!"
+                    });
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>
