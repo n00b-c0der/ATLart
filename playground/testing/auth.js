@@ -54,24 +54,32 @@ $(document).ready(function () {
         e.preventDefault()
         console.log("hello");
 
-        const email = $("#signup-email").val().trim()
-        const password = $("#signup-password").val().trim()
+        // const email = $("#signup-email").val().trim()
+        // const password = $("#signup-password").val().trim()
 
-        // console.log("hello2");
+        // // console.log("hello2");
 
-        // console.log(email), password;
+        // // console.log(email), password;
 
-        auth.createUserWithEmailAndPassword(email, password).then(cred => {
-            console.log(cred);
-            const modal = $("#modal-signup")
-            M.Modal.getInstance(modal).close()
+        // auth.createUserWithEmailAndPassword(email, password).then(cred => {
+        //     console.log(cred);
+        //     const modal = $("#modal-signup")
+        //     M.Modal.getInstance(modal).close()
 
-            // Not sure why reset is not working ?
-            // $("#signup-Form").reset()
-            $("#login-email").val('')
-            $("#login-password").val('')
+        //     // Not sure why reset is not working ?
+        //     // $("#signup-Form").reset()
+        //     $("#login-email").val('')
+        //     $("#login-password").val('')
 
-        })
+        // })
+
+        function isValid(str) {
+            var regexd3 = RegExp('^[a-zA-Z]{4,}');
+
+            return regexd3.test(str)
+        }
+
+        isValid('Tests')
 
     })
 
@@ -104,5 +112,10 @@ $(document).ready(function () {
         })
 
     })
+
+
+
+
+
 
 })
