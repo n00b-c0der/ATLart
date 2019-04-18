@@ -8,7 +8,7 @@ function initMap() {
     zoom: 11,
     center: {
       lat: Number(33.749),
-      lng: Number(-84.388)
+      lng: Number(-84.388),
     }
   });
 
@@ -20,12 +20,17 @@ function initMap() {
     var data = snapShot.val(); // { rahdnkey: { locationCoodsvals: {} }, anyotherrahdnkey: { locationCoodsvals: {} } }
 
     for (var key in data) {
+      // console.log(data);
       userLocation = data[key].locationCoodsvals;
-      pinName = data[key].userNameField;
-      contentString = `<h1>${data[key].DescriptionField}</h1> <img src="https://res.cloudinary.com/ronwab/image/upload/c_thumb,w_200,g_face/v1555194538/img3.jpg">`;
-
+      pinName = data[key].DescriptionField;
+      imageurl = data[key].urlfield;
+      imageTitleField = data[key].imageTitleField;
+      console.log(imageurl);
+      
+      contentString = `<h1>${data[key].imageTitleField}</h1> <br> <img src="${imageurl}" width="200px"> <br> <h2>${pinName}<h/2>`;
       addToMarker(userLocation, pinName, contentString);
     }
+    console.log(firebase.database().ref("/"))
 
     function addToMarker(userLocation, pinName, contentString) {
 

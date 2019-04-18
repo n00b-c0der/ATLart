@@ -14,15 +14,16 @@ $(document).ready(function () {
     var imageTitle;
     var userName;
     var uploadDate = 0;
-    var Address = 0
-    var Description
+    var Address = 0;
+    var Description;
 
     var CLOUDNARY_URL = 'https://api.cloudinary.com/v1_1/ronwab/upload'
     var CLOUDNARY_UPLOAD_PRESET = 'ffghjylr'
     var fileUpload = document.getElementById('file-upload');
-    var userFile
-    var imageName
-    var LocationCoods = 0
+    var userFile;
+    var imageName;
+    var LocationCoods = 0;
+    
 
     fileUpload.addEventListener('change', function (event) {
         event.preventDefault()
