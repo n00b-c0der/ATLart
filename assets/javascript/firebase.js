@@ -1,15 +1,15 @@
 $(document).ready(function () {
 
-    var config = {
-        apiKey: "AIzaSyCQUPXI0N7-b4bOpNlb6n8ML1p6YW5VJ48",
-        authDomain: "ronwab-8dbcd.firebaseapp.com",
-        databaseURL: "https://ronwab-8dbcd.firebaseio.com",
-        projectId: "ronwab-8dbcd",
-        storageBucket: "ronwab-8dbcd.appspot.com",
-        messagingSenderId: "148535054528"
-    };
-    firebase.initializeApp(config);
-    database = firebase.database()
+    // var config = {
+    //     apiKey: "AIzaSyCQUPXI0N7-b4bOpNlb6n8ML1p6YW5VJ48",
+    //     authDomain: "ronwab-8dbcd.firebaseapp.com",
+    //     databaseURL: "https://ronwab-8dbcd.firebaseio.com",
+    //     projectId: "ronwab-8dbcd",
+    //     storageBucket: "ronwab-8dbcd.appspot.com",
+    //     messagingSenderId: "148535054528"
+    // };
+    // firebase.initializeApp(config);
+    // database = firebase.database()
     var selectedFile
     var imageTitle;
     var userName;
@@ -23,6 +23,7 @@ $(document).ready(function () {
     var userFile
     var imageName
     var LocationCoods = 0
+    var imgPreview = $('#img-preview')
 
     fileUpload.addEventListener('change', function (event) {
         event.preventDefault()
@@ -90,7 +91,8 @@ $(document).ready(function () {
 
             database.ref().push(personDetails)
 
+
+
         })
     })
-
 })
