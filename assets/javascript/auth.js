@@ -22,7 +22,6 @@ const auth = firebase.auth()
 
 
 function signUp(event) {
-
     event.preventDefault();
     console.log("hello");
 
@@ -30,36 +29,35 @@ function signUp(event) {
     userPassword = document.getElementById('password').value;
     confirmPassword = document.getElementById('confirmPassword').value;
 
-    comparePasswords()
+    if (userPassword === confirmPassword) {
+        auth.createUserWithEmailAndPassword(userEmail, userPassword)
 
 
-    auth.createUserWithEmailAndPassword(userEmail, userPassword)
+        // .catch(function (error) {
+
+        //     console.log(error);
+        // })
 
 
-    // .catch(function (error) {
+        console.log(userEmail, userPassword, confirmPassword);
+        $('#sign-up-Modal').modal('hide')
 
-    //     console.log(error);
-    // })
+        alert('signed Up')
 
+        //redirects to a specific page
+        location.assign("/html/uploadImage.html");
+    } else {
 
-    console.log(userEmail, userPassword, confirmPassword);
-    $('#sign-up-Modal').modal('hide')
-
-    console.log("Signed UP");
-}
-
-function comparePasswords() {
-    if (userPassword != confirmPassword) {
+        //add some modal
         alert("passwords dont match");
-        document.getElementById('emailAddress').value = (" ");
-        document.getElementById('password').value = (" ");
-        document.getElementById('confirmPassword').value = (" ");
+        // document.getElementById('emailAddress').value = (" ");
+        document.getElementById('password').value = ("");
+        document.getElementById('confirmPassword').value = ("");
         return
-        //     } else if(
-
-        //     )
     }
 }
+
+
 document.getElementById('signInSubmit').addEventListener('click', signInSubmit)
 
 function signInSubmit(event) {
@@ -73,7 +71,13 @@ function signInSubmit(event) {
     auth.signInWithEmailAndPassword(userEmail, userPassword)
 
     $('#sign-in-Modal').modal('hide')
-    alert('signed in')
+    console.log('signed in');
+
+    $('#successful-signIn-Modal').modal('show')
+    setTimeout(function () {
+        $('#successful-signIn-Modal').modal('hide');
+    }, 3000);
+
     location.assign("/html/uploadImage.html");
 
 }
@@ -83,29 +87,4 @@ document.getElementById('signOutLink').addEventListener('click', logOut)
 function logOut() {
     auth.signOut()
     console.log('signed out');
-
-
 }
-//once sign in display different stuff hide sign up
-auth.onAuthStateChanged(function (user) {
-    console.log(loggedOutlinks);
-    console.log(loggedInlinks);
-
-
-    if (user) {
-        loggedOutlinks.forEach(links => {
-            links.style.display = 'none'
-        });
-        loggedInlinks.forEach(links => {
-            links.style.display = 'block'
-        })
-    } else {
-        loggedOutlinks.forEach(links => {
-            links.style.display = 'block'
-        });
-        loggedInlinks.forEach(links => {
-            links.style.display = 'none'
-        })
-
-    }
-})

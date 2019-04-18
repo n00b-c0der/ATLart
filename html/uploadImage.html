@@ -16,10 +16,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
+  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script>
-        moment().format()
-    </script>
     <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -51,17 +49,15 @@
     <div class="container">
 
         <a href="./googlemaps.html">MAPS</a>
+
         <div class="jumbotron">
             <h1 class="text-center">Employee Tracker</h1>
         </div>
 
-
         <div class="row">
-
             <!-- Sign-Up Card-->
             <div class="col-lg-6">
                 <div class="card card-default">
-                    <div id='testImage'>WORK</div>
                     <div class="card-header">
                         New Member Sign-Up
                     </div>
@@ -103,9 +99,29 @@
                 </div>
             </div>
         </div>
-        <div id="map"></div>
-    </div>
 
+        <!-- Button trigger modal -->
+
+        <!--  submit success Modal -->
+        <div class="modal fade" id="successful-submit-Modal" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Successful Upload</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Your image has been uploaded successfully</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
 </body>
 
 </html>

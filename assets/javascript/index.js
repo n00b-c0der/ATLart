@@ -6,7 +6,6 @@ auth.onAuthStateChanged(function (user) {
     console.log(loggedOutlinks);
     console.log(loggedInlinks);
 
-
     if (user) {
 
         const loggedinUserDetail = `Logged in as ${user.email}`
@@ -31,3 +30,4 @@ auth.onAuthStateChanged(function (user) {
 
     }
 })
+
