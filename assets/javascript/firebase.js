@@ -14,20 +14,19 @@ $(document).ready(function () {
     var imageTitle;
     var userName;
     var uploadDate = 0;
-    var Address = 0;
-    var Description;
+    var Address = 0
+    var Description
 
     var CLOUDNARY_URL = 'https://api.cloudinary.com/v1_1/ronwab/upload'
     var CLOUDNARY_UPLOAD_PRESET = 'ffghjylr'
     var fileUpload = document.getElementById('file-upload');
-    var userFile;
-    var imageName;
-    var LocationCoods = 0;
-    
+    var userFile
+    var imageName
+    var LocationCoods = 0
+    var imgPreview = $('#img-preview')
 
     fileUpload.addEventListener('change', function (event) {
         event.preventDefault()
-        console.log(event)
 
         userFile = event.target.files[0]
         imageName = event.target.files[0].name
@@ -36,7 +35,6 @@ $(document).ready(function () {
 
     $("#submit-button").on("click", function (event) {
         event.preventDefault()
-        console.log(imageName);
 
         imageTitle = $('#imageTitle').val().trim().toLowerCase();
         userName = $('#userName').val().toLowerCase();
@@ -59,39 +57,60 @@ $(document).ready(function () {
             data: formData
 
             //This is just a callback function
-        }).then(function (res) {
+        }).then(function (response) {
+            var imgurl = response.data.secure_url
 
-
-            // var testing2 = res.data.url
-
-
-            // var imageOnPage = $(".displayImages")
-            // $(".displayImages").attr('src', testing2)
+            postDatatoFirebase(imgurl)
         })
 
-        axios({
-            url: "https://maps.googleapis.com/maps/api/geocode/json?address=" +
-                Address + "&key=AIzaSyDq2hOQHj-qstNYUsl7a8kHOtrkeJVhdro",
-            method: "GET"
-        }).then(function (data) {
-            console.log(data);
+        function postDatatoFirebase(imgUrl) {
 
-            LocationCoods = data.data.results[0].geometry.location
-            console.log(LocationCoods);
+            console.log("this is the response ", imgUrl);
+            axios({
+                url: "https://maps.googleapis.com/maps/api/geocode/json?address=" +
+                    Address + "&key=AIzaSyDq2hOQHj-qstNYUsl7a8kHOtrkeJVhdro",
+                method: "GET"
+            }).then(function (data) {
 
-            var personDetails = {
-                imageTitleField: imageTitle,
-                userNameField: userName,
-                DateField: uploadDate,
-                AddressField: Address,
-                DescriptionField: Description,
-                ImageField: imageName,
-                locationCoodsvals: LocationCoods
-            }
+                LocationCoods = data.data.results[0].geometry.location
 
-            database.ref().push(personDetails)
+                var personDetails = {
+                    imageTitleField: imageTitle,
+                    userNameField: userName,
+                    DateField: uploadDate,
+                    AddressField: Address,
+                    DescriptionField: Description,
+                    ImageField: imageName,
+                    locationCoodsvals: LocationCoods,
+                    urlfield: imgUrl
+                }
 
-        })
+                database.ref().push(personDetails)
+
+            })
+        }
+        // callUploadSuccessModal()
+        clearForm()
     })
+
+    // function callUploadSuccessModal() {
+
+    //     $("#successful-submit-Modal").modal('show')
+    //     setTimeout(function () {
+    //         $("#successful-submit-Modal").modal('hide');
+    //     }, 3000);
+
+
+
+    // }
+
+    function clearForm() {
+        $('#imageTitle').val("")
+        $('#userName').val("")
+        $('#uploadDate').val("")
+        $('#Address').val("")
+        $('#Description').val("")
+
+    }
 
 })
