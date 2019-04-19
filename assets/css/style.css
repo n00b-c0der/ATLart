@@ -10,8 +10,13 @@ body {
   background-image: url('https://st2.depositphotos.com/2065849/8816/i/950/depositphotos_88161222-stock-photo-whitewashed-brick-city-wall-for.jpg');
 }
 
+@font-face {
+  font-family: "Confetti";
+  src: url('./../fonts/Confetti\ Stream.ttf');
+}
+
 h1 {
-  font-family: cursive;
+  font-family: "Confetti" ;
   size: 20px;
   color: aquamarine;
   text-shadow: 1px 1px 0 #000,
