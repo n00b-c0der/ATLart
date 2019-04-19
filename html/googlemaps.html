@@ -6,13 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1,
             shrink-to-fit=no">
-
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
@@ -24,19 +19,34 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/form.css">
     <script src="../assets/javascript/firebase.js"></script>
     <script src="../assets/javascript/googlemaps.js"></script>
 
     <title>MAPS</title>
-</head>
 
-<body class="goog">
-    <a href="../index.html">HOME </a>
-    <h1>Art Around Atlanta</h1>
-    <div id="map"></div>
-    <h2>Find ART near you!</h2>
-    <div id="testImage"></div>
-</body>
+    <style>
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 800px;
+            /* The height is 400 pixels */
+            width: 93%;
+            /* The width is the width of the web page */
+            text-align: center;
+            margin-left: 60px;
+        }
+    </style>
+</head>
+<div class="w3-content" style="max-width:1500px">
+    <header class="w3-container w3-xlarge w3-padding-24">
+        <a href="#" class="w3-left w3-button w3-white">MY ART</a>
+        <a href="../index.html" class="w3-right w3-button w3-white">HOME</a>
+        <h1>Art Around Atlanta</h1>
+        <div id="map"></div>
+        <h2>Find ART near you!</h2>
+        <div id="testImage"></div>
+    </header>
+</div>
 
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDq2hOQHj-qstNYUsl7a8kHOtrkeJVhdro&callback=initMap">
