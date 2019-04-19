@@ -42,13 +42,11 @@ $(document).ready(function () {
         Address = $('#Address').val().trim().toLowerCase();
         Description = $('#Description').val().trim().toLowerCase();
 
-
         var formData = new FormData();
         formData.append('file', userFile);
         formData.append('upload_preset', CLOUDNARY_UPLOAD_PRESET)
 
         axios({
-            // see line 25
             url: CLOUDNARY_URL,
             method: 'POST',
             headers: {
@@ -90,18 +88,22 @@ $(document).ready(function () {
             })
         }
         // callUploadSuccessModal()
+        // console.log("here");
+
+        // $("#successful-submit-Modal").modal('show')
+        // setTimeout(function () {
+        //     $("#successful-submit-Modal").modal('hide');
+        // }, 3000);
         clearForm()
     })
 
     // function callUploadSuccessModal() {
+    //     console.log("here");
 
     //     $("#successful-submit-Modal").modal('show')
     //     setTimeout(function () {
     //         $("#successful-submit-Modal").modal('hide');
     //     }, 3000);
-
-
-
     // }
 
     function clearForm() {
@@ -110,7 +112,5 @@ $(document).ready(function () {
         $('#uploadDate').val("")
         $('#Address').val("")
         $('#Description').val("")
-
     }
-
 })
