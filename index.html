@@ -35,7 +35,7 @@
     <a href="./html/googlemaps.html">MAPS</a>
     <h1>ATL art</h1>
     <div class="jumbotron">
-      <h1 class="text-center">Submission Page</h1>
+      <h2 class="text-center">Submission Page</h2>
     </div>
 
     <div class="row">
@@ -94,38 +94,5 @@
     </div>
   </div>
 </body>
-<!-- <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDq2hOQHj-qstNYUsl7a8kHOtrkeJVhdro&callback=initMap">
-</script>
-<script>
-  function initMap() {
-    var map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 11,
-      center: {
-        lat: Number(33.7490),
-        lng: Number(-84.3880)
-      }
-    });
-
-    var myLatLng = firebase.database().ref("/");
-
-    myLatLng.on("value", function (snapChot) {
-      // TODO:
-      // Firebase values coming here
-      var data = snapChot
-        .val(); // { rahdnkey: { locationCoodsvals: {} }, anyotherrahdnkey: { locationCoodsvals: {} } }
-
-      for (var key in data) {
-        let userLocation = data[key].locationCoodsvals;
-        console.log("My Lat LG: ", userLocation);
-        var marker = new google.maps.Marker({
-          position: userLocation,
-          map: map,
-          title: "Hello World!"
-        });
-      }
-    });
-  }
-</script> -->
 
 </html>
