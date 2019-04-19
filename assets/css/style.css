@@ -1,29 +1,81 @@
-#dropbox { 
-    border: 4px dashed #ccc; 
-    padding-left: 8px;
-    size: 200px;
-  }
-  .my-form {
-    margin-top: 10px;
-  }
-  .gallery {
-    margin: 10px;
-  }
-  .gallery img {
-    margin-left: 16px;
-  }
-  .progress-bar{
-    width: 200px;
-    position: relative;
-    height: 8px;
-    margin-top: 4px;
-  }
-  .progress-bar .progress{
-    height: 8px;
-    background-color: #ff0000;
-    width: 0;
-  }
+.jumbotron {
+  background-color: lightgrey;
+}
 
-#card-default {
-  width: 500px;
+body {
+  background-image: url('https://st2.depositphotos.com/2065849/8816/i/950/depositphotos_88161222-stock-photo-whitewashed-brick-city-wall-for.jpg');
+}
+
+.goog {
+  background-image: url('https://st2.depositphotos.com/2065849/8816/i/950/depositphotos_88161222-stock-photo-whitewashed-brick-city-wall-for.jpg');
+}
+
+h1 {
+  font-family: cursive;
+  size: 20px;
+  color: aquamarine;
+  text-shadow: 1px 1px 0 #000,
+    -1px 1px 0 #000,
+    1px -1px 0 #000,
+    -1px -1px 0 #000,
+    0px 1px 0 #000,
+    0px -1px 0 #000,
+    -1px 0px 0 #000,
+    1px 0px 0 #000,
+    2px 2px 0 #000,
+    -2px 2px 0 #000,
+    2px -2px 0 #000,
+    -2px -2px 0 #000,
+    0px 2px 0 #000,
+    0px -2px 0 #000,
+    -2px 0px 0 #000,
+    2px 0px 0 #000,
+    1px 2px 0 #000,
+    -1px 2px 0 #000,
+    1px -2px 0 #000,
+    -1px -2px 0 #000,
+    2px 1px 0 #000,
+    -2px 1px 0 #000,
+    2px -1px 0 #000,
+    -2px -1px 0 #000;
+}
+
+.card-body {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
+  background-color: lightgrey;
+  font-size: 26px;
+  text-shadow: 1px 1px 0 #000,
+    -1px 1px 0 #000,
+    1px -1px 0 #000,
+    -1px -1px 0 #000,
+    0px 1px 0 #000,
+    0px -1px 0 #000,
+    -1px 0px 0 #000,
+    1px 0px 0 #000,
+    2px 2px 0 #000,
+    -2px 2px 0 #000,
+    2px -2px 0 #000,
+    -2px -2px 0 #000,
+    0px 2px 0 #000,
+    0px -2px 0 #000,
+    -2px 0px 0 #000,
+    2px 0px 0 #000,
+    1px 2px 0 #000,
+    -1px 2px 0 #000,
+    1px -2px 0 #000,
+    -1px -2px 0 #000,
+    2px 1px 0 #000,
+    -2px 1px 0 #000,
+    2px -1px 0 #000,
+    -2px -1px 0 #000;
+
+}
+
+#images {
+  box-shadow: 10px 10px 5px grey;
+}
+
+h2 {
+  font-size: 18px;
 }

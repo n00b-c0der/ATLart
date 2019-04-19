@@ -8,25 +8,29 @@ function initMap() {
     zoom: 11,
     center: {
       lat: Number(33.749),
-      lng: Number(-84.388)
+      lng: Number(-84.388),
     }
   });
 
   var myLatLng = firebase.database().ref("/");
 
-  myLatLng.on("value", function (snapChot) {
+  myLatLng.on("value", function (snapShot) {
     // TODO:
     // Firebase values coming here
-    var data = snapChot.val(); // { rahdnkey: { locationCoodsvals: {} }, anyotherrahdnkey: { locationCoodsvals: {} } }
+    var data = snapShot.val(); // { rahdnkey: { locationCoodsvals: {} }, anyotherrahdnkey: { locationCoodsvals: {} } }
 
     for (var key in data) {
+      // console.log(data);
       userLocation = data[key].locationCoodsvals;
-      pinName = data[key].userNameField;
-      contentString = `<h1>${data[key].DescriptionField}</h1>`;
-      //   console.log("pinName " + pinName);
-
+      pinName = data[key].DescriptionField;
+      imageurl = data[key].urlfield;
+      imageTitleField = data[key].imageTitleField;
+      console.log(imageurl);
+      
+      contentString = `<h1>${data[key].imageTitleField}</h1> <br> <img src="${imageurl}" width="200px"> <br> <h2>${pinName}<h/2>`;
       addToMarker(userLocation, pinName, contentString);
     }
+    console.log(firebase.database().ref("/"))
 
     function addToMarker(userLocation, pinName, contentString) {
 
@@ -48,6 +52,4 @@ function initMap() {
       });
     }
   });
-
-  // console.log("My Lat LG: Blah", userLocation);
 }
