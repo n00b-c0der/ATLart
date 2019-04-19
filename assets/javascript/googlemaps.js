@@ -26,16 +26,11 @@ function initMap() {
       imageurl = data[key].urlfield;
       imageTitleField = data[key].imageTitleField;
       DescriptionField = data[key].DescriptionField
-      console.log(userLocation);
-      console.log(pinName);
-      console.log(imageurl);
-
-      console.log(imageTitleField);
-
-
+     
   
       
       contentString = `<h3>${data[key].imageTitleField}</h3> <br> <img src="${imageurl}" width="180px"> <br>Artist: <h3>${pinName}<h/3><br>Description: <p>${DescriptionField}</p>`;
+ 
       addToMarker(userLocation, pinName, contentString);
     }
     console.log(firebase.database().ref("/"))
@@ -46,11 +41,10 @@ function initMap() {
         content: contentString
       });
 
-      // console.log("My Lat LG: ", userLocation);
+      
       var marker = new google.maps.Marker({
         position: userLocation,
         map: map,
-        // title: pinName
         title: pinName
       });
 
