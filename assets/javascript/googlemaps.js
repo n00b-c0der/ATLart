@@ -25,7 +25,14 @@ function initMap() {
       pinName = data[key].userNameField;
       imageurl = data[key].urlfield;
       imageTitleField = data[key].imageTitleField;
+      console.log(userLocation);
+      console.log(pinName);
       console.log(imageurl);
+
+      console.log(imageTitleField);
+
+
+  
       
       contentString = `<h1>${data[key].imageTitleField}</h1> <br> <img src="${imageurl}" width="180px"> <br> <h2>${pinName}<h/2>`;
       addToMarker(userLocation, pinName, contentString);
