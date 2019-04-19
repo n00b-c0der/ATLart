@@ -23,15 +23,13 @@
   <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="./assets/css/form.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
   <script src="./assets/javascript/firebase.js"></script>
   <script src="./assets/javascript/googlemaps.js"></script>
   <title>ATLart</title>
 
   <style>
-      body {
-          font-family: "Raleway", Arial, sans-serif
-      }
+  
 
       .w3-row img {
           margin-bottom: -8px
@@ -44,7 +42,7 @@
     <div class="w3-content" style="max-width:1500px">
 
         <header class="w3-container w3-xlarge w3-padding-24">
-            <a href="#" class="w3-left w3-button w3-white">MY ART</a>
+            <h1>ATLart</h1>
             <a href="#about" class="w3-right w3-button w3-white">About</a>
             <a href="./html/googlemaps.html" class="w3-right w3-button w3-white">Map</a>
 
@@ -73,8 +71,7 @@
                     tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non
                     fringilla. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae,
                     ultricies congue gravida diam non fringilla.</p>
-                    <button onclick="document.getElementById('id01').style.display='block'">Art Submission</button>
-
+                   
                     <!-- The Modal (contains the Sign Up form) -->
                     <div id="id01" class="modal">
                         <span onclick="document.getElementById('id01').style.display='none'" class="close"
@@ -84,7 +81,7 @@
                             <p>Please fill in this form to submit street art.</p>
     
                             <div class="form-group row">
-                                <label for="name-input">Name/Artist:</label>
+                                <label for="name-input">Artist:</label>
                                 <input class="form-control" id="userName" type="text" required>
                             </div>
                             <div class="form-group row">
@@ -107,12 +104,10 @@
                             <div>
                                 <img src="" class="displayImages">
                             </div>
-                            <p>By submitting the art, you agree to our <a href="#" style="color:dodgerblue">Terms &
-                                    Privacy</a>.</p>
+                            <p>By submitting the art, you agree to our <a href="#" style="color:dodgerblue">Terms & Conditions</a>.</p>
     
                             <div class="clearfix">
-                                <button type="button" onclick="document.getElementById('id01').style.display='none'"
-                                    class="cancelbtn">Cancel</button>
+                                <button type="button" onclick="document.getElementById('id01').style.display='none'"></button>
                                     <div class="card">
                                             <label class="file-upload-container" for="file-upload">
                                                 <input id="file-upload" type="file">
@@ -128,38 +123,5 @@
           </div>
       
 </body>
-<!-- <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDq2hOQHj-qstNYUsl7a8kHOtrkeJVhdro&callback=initMap">
-</script>
-<script>
-  function initMap() {
-    var map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 11,
-      center: {
-        lat: Number(33.7490),
-        lng: Number(-84.3880)
-      }
-    });
-
-    var myLatLng = firebase.database().ref("/");
-
-    myLatLng.on("value", function (snapChot) {
-      // TODO:
-      // Firebase values coming here
-      var data = snapChot
-        .val(); // { rahdnkey: { locationCoodsvals: {} }, anyotherrahdnkey: { locationCoodsvals: {} } }
-
-      for (var key in data) {
-        let userLocation = data[key].locationCoodsvals;
-        console.log("My Lat LG: ", userLocation);
-        var marker = new google.maps.Marker({
-          position: userLocation,
-          map: map,
-          title: "Hello World!"
-        });
-      }
-    });
-  }
-</script> -->
 
 </html>
