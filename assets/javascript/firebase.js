@@ -93,16 +93,6 @@ $(document).ready(function () {
         clearForm()
     })
 
-    // function callUploadSuccessModal() {
-
-    //     $("#successful-submit-Modal").modal('show')
-    //     setTimeout(function () {
-    //         $("#successful-submit-Modal").modal('hide');
-    //     }, 3000);
-
-
-
-    // }
 
     function clearForm() {
         $('#imageTitle').val("")
