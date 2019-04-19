@@ -34,7 +34,7 @@ function initMap() {
 
   
       
-      contentString = `<h1>${data[key].imageTitleField}</h1> <br> <img src="${imageurl}" width="180px"> <br> <h2>${pinName}<h/2>`;
+      contentString = `<h3>${data[key].imageTitleField}</h3> <br> <img src="${imageurl}" width="180px"> <br> <h3>${pinName}<h/3>`;
       addToMarker(userLocation, pinName, contentString);
     }
     console.log(firebase.database().ref("/"))
