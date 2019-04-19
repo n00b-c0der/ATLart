@@ -3,20 +3,19 @@
 <title>ATLart</title>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-  </script>
+    </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-  
+
   <script>
     moment().format()
   </script>
@@ -29,104 +28,103 @@
   <title>ATLart</title>
 
   <style>
-      body {
-          font-family: "Raleway", Arial, sans-serif
-      }
+    body {
+      font-family: "Raleway", Arial, sans-serif
+    }
 
-      .w3-row img {
-          margin-bottom: -8px
-      }
+    .w3-row img {
+      margin-bottom: -8px
+    }
   </style>
 
 </head>
 
 <body>
-    <div class="w3-content" style="max-width:1500px">
+  <div class="w3-content" style="max-width:1500px">
 
-        <header class="w3-container w3-xlarge w3-padding-24">
-            <a href="#" class="w3-left w3-button w3-white">MY ART</a>
-            <a href="#about" class="w3-right w3-button w3-white">About</a>
-            <a href="./html/googlemaps.html" class="w3-right w3-button w3-white">Map</a>
+    <header class="w3-container w3-xlarge w3-padding-24">
+      <a href="#" class="w3-left w3-button w3-white">MY ART</a>
+      <a href="#about" class="w3-right w3-button w3-white">About</a>
+      <a href="./html/googlemaps.html" class="w3-right w3-button w3-white">Map</a>
 
-        </header>
+    </header>
 
-        <div class="w3-row">
-            <div class="w3-half">
-                <img src="./assets/images/streetart.jpg" style="width:100%; height: 400px">
-                <img src="./assets/images/streetart2.jpg" style="width:100%; height: 400px">
+    <div class="w3-row">
+      <div class="w3-half">
+        <img src="./assets/images/streetart.jpg" style="width:100%; height: 400px">
+        <img src="./assets/images/streetart2.jpg" style="width:100%; height: 400px">
+      </div>
+
+      <div class="w3-half">
+        <img src="./assets/images/streetart3.jpg" style="width:100%; height:400px">
+        <img src="./assets/images/streetart4.jpg" style="width:100%; height:400px">
+
+      </div>
+    </div>
+
+    <footer class="w3-light-grey w3-padding-64 w3-center" id="about">
+      <h2>About</h2>
+      <img src="./assets/images/about.jpg" class="w3-image w3-padding-32" width="300" height="300">
+      <form style="margin:auto;width:60%" target="_blank">
+        <p>Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an interest
+          of lorem ipsum and mauris neque quam blog. I want to share my world with you. Praesent tincidunt sed
+          tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non
+          fringilla. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae,
+          ultricies congue gravida diam non fringilla.</p>
+        <button onclick="document.getElementById('id01').style.display='block'">Art Submission</button>
+
+        <!-- The Modal (contains the Sign Up form) -->
+        <div id="id01" class="modal">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal"></span>
+          <div class="container">
+            <h1>Art Submission</h1>
+            <p>Please fill in this form to submit street art.</p>
+
+            <div class="form-group row">
+              <label for="name-input">Name/Artist:</label>
+              <input class="form-control" id="userName" type="text" required>
+            </div>
+            <div class="form-group row">
+              <label for="email-input">Image title:</label>
+              <input class="form-control" id="imageTitle" type="text" required>
+            </div>
+            <div class="form-group row">
+              <label for="age-input">Picture Capture Date:</label>
+              <input class="form-control" id="uploadDate" type="date" required>
+            </div>
+            <div class="form-group row">
+              <label for="age-input">Address (Don't use commas):</label>
+              <input class="form-control" id="Address" type="text" required>
+            </div>
+            <div class="form-group row">
+              <label for="age-input">Description:</label>
+              <input class="form-control" id="Description" type="text" required>
             </div>
 
-            <div class="w3-half">
-                <img src="./assets/images/streetart3.jpg" style="width:100%; height:400px">
-                <img src="./assets/images/streetart4.jpg" style="width:100%; height:400px">
+            <div>
+              <img src="" class="displayImages">
+            </div>
+            <p>By submitting the art, you agree to our <a href="#" style="color:dodgerblue">Terms &
+                Privacy</a>.</p>
+
+            <div class="clearfix">
+              <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                class="cancelbtn">Cancel</button>
+              <div class="card">
+                <label class="file-upload-container" for="file-upload">
+                  <input id="file-upload" type="file">
+                </label>
+              </div>
+              <button type="button" class="signup" id="submit-button"
+                onclick="location.href = './html/googlemaps.html';">Submit</button>
 
             </div>
-        </div>
-
-        <footer class="w3-light-grey w3-padding-64 w3-center" id="about">
-            <h2>About</h2>
-            <img src="./assets/images/about.jpg" class="w3-image w3-padding-32" width="300"
-                height="300">
-            <form style="margin:auto;width:60%" target="_blank">
-                <p>Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an interest
-                    of lorem ipsum and mauris neque quam blog. I want to share my world with you. Praesent tincidunt sed
-                    tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non
-                    fringilla. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae,
-                    ultricies congue gravida diam non fringilla.</p>
-                    <button onclick="document.getElementById('id01').style.display='block'">Art Submission</button>
-
-                    <!-- The Modal (contains the Sign Up form) -->
-                    <div id="id01" class="modal">
-                        <span onclick="document.getElementById('id01').style.display='none'" class="close"
-                            title="Close Modal"></span>
-                        <div class="container">
-                            <h1>Art Submission</h1>
-                            <p>Please fill in this form to submit street art.</p>
-    
-                            <div class="form-group row">
-                                <label for="name-input">Name/Artist:</label>
-                                <input class="form-control" id="userName" type="text" required>
-                            </div>
-                            <div class="form-group row">
-                                <label for="email-input">Image title:</label>
-                                <input class="form-control" id="imageTitle" type="text" required>
-                            </div>
-                            <div class="form-group row">
-                                <label for="age-input">Picture Capture Date:</label>
-                                <input class="form-control" id="uploadDate" type="date" required>
-                            </div>
-                            <div class="form-group row">
-                                <label for="age-input">Address (Don't use commas):</label>
-                                <input class="form-control" id="Address" type="text" required>
-                            </div>
-                            <div class="form-group row">
-                                <label for="age-input">Description:</label>
-                                <input class="form-control" id="Description" type="text" required>
-                            </div>
-    
-                            <div>
-                                <img src="" class="displayImages">
-                            </div>
-                            <p>By submitting the art, you agree to our <a href="#" style="color:dodgerblue">Terms &
-                                    Privacy</a>.</p>
-    
-                            <div class="clearfix">
-                                <button type="button" onclick="document.getElementById('id01').style.display='none'"
-                                    class="cancelbtn">Cancel</button>
-                                    <div class="card">
-                                            <label class="file-upload-container" for="file-upload">
-                                                <input id="file-upload" type="file">
-                                            </label>
-                                        </div>                            
-                                <button type="button" class="signup" id="submit-button">Submit</button>
-
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </footer>
           </div>
-      
+        </div>
+      </form>
+    </footer>
+  </div>
+
 </body>
 <!-- <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDq2hOQHj-qstNYUsl7a8kHOtrkeJVhdro&callback=initMap">
