@@ -15,10 +15,11 @@ body {
 .goog {
   background-image: url('https://st2.depositphotos.com/2065849/8816/i/950/depositphotos_88161222-stock-photo-whitewashed-brick-city-wall-for.jpg');
   padding-left: 100px;
+  font-size: 50px;
 }
 
 h1 {
-  font-family: "Confetti", cursive, sans-serif;
+  font-family: "Confetti", cursive;
   font-size: 150px;
   color: aquamarine;
   text-shadow: 1px 1px 0 #000,
