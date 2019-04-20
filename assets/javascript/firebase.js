@@ -87,24 +87,8 @@ $(document).ready(function () {
 
             })
         }
-        // callUploadSuccessModal()
-        // console.log("here");
-
-        // $("#successful-submit-Modal").modal('show')
-        // setTimeout(function () {
-        //     $("#successful-submit-Modal").modal('hide');
-        // }, 3000);
         clearForm()
     })
-
-    // function callUploadSuccessModal() {
-    //     console.log("here");
-
-    //     $("#successful-submit-Modal").modal('show')
-    //     setTimeout(function () {
-    //         $("#successful-submit-Modal").modal('hide');
-    //     }, 3000);
-    // }
 
     function clearForm() {
         $('#imageTitle').val("")
